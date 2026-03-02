@@ -11,7 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  
+
   const { updateUser } = useContext(UserContext)
   const navigate = useNavigate();
 
@@ -44,7 +44,7 @@ const Login = () => {
         }
       }
     } catch (error) {
-      if (error.response && error.response.data.message){
+      if (error.response && error.response.data.message) {
         setError(error.response.data.message)
       } else {
         setError("มีบางอย่างผิดพลาด โปรดลองอีกครั้ง")
@@ -98,6 +98,29 @@ const Login = () => {
             สมัครสมาชิค
           </Link>
         </p>
+        <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-700">
+          <p className="font-semibold mb-2 text-gray-800">
+            บัญชีสำหรับทดสอบ
+          </p>
+          <p>
+            <span className="font-medium">สถานะ Admin</span>
+          </p>
+          <p>
+            <span className="font-medium">Email:</span> Pakinz@gmail.com
+          </p>
+          <p>
+            <span className="font-medium">Password:</span> test@123
+          </p>
+          <p>
+            <span className="font-medium">สถานะ User</span>
+          </p>
+          <p>
+            <span className="font-medium">Email:</span> user@gmail.com
+          </p>
+          <p>
+            <span className="font-medium">Password:</span> 123456
+          </p>
+        </div>
       </div>
     </AuthLayout>
   );

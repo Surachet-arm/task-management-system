@@ -14,7 +14,7 @@ const Input = ({ value, onChange, label, placeholder, type }) => {
         {label}
       </label>
 
-      <div className="input-box">
+      <div className="flex items-center border border-gray-300 rounded-lg px-3 py-2">
         <input
           type={
             type === "password"
@@ -24,9 +24,10 @@ const Input = ({ value, onChange, label, placeholder, type }) => {
               : type
           }
           placeholder={placeholder}
-          className="w-full bg-transparent outline-none"
+          className="w-full bg-transparent outline-none pr-2"
           value={value}
           onChange={(e) => onChange(e)}
+          autoComplete="new-password"
         />
 
         {type === "password" && (
