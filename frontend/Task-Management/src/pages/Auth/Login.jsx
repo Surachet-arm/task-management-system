@@ -32,12 +32,13 @@ const Login = () => {
         email,
         password
       })
-      const { token, role } = response.data
+      const { token, user } = response.data
 
       if (token) {
         localStorage.setItem("token", token)
         updateUser(response.data)
-        if (role === "admin") {
+
+        if (user.role === "admin") {
           navigate("/admin/dashboard")
         } else {
           navigate("/user/dashboard")
