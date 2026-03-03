@@ -15,40 +15,55 @@ const Login = () => {
   const { updateUser } = useContext(UserContext)
   const navigate = useNavigate();
 
-  // Handle Login Form Submit
+
   const handleLogin = async (e) => {
     e.preventDefault();
+
     if (!validateEmail(email)) {
-      setError("Please enter a valid email address.")
-      return
+      setError("Please enter a valid email address.");
+      return;
     }
+
     if (!password) {
-      setError("Please enter the password")
-      return
+      setError("Please enter the password");
+      return;
     }
-    setError("")
+
+    setError("");
+
     try {
       const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
         email,
-        password
-      })
-      const { token, user } = response.data
+        password,
+      });
 
-      if (token) {
-        localStorage.setItem("token", token)
-        updateUser(response.data)
+      const token = response.data?.token;
+      const role = response.data?.role;
 
-        if (user.role === "admin") {
-          navigate("/admin/dashboard")
-        } else {
-          navigate("/user/dashboard")
-        }
+      if (!token) {
+        setError("Token ไม่ถูกต้อง");
+        return;
       }
-    } catch (error) {
-      if (error.response && error.response.data.message) {
-        setError(error.response.data.message)
+
+
+      localStorage.setItem("token", token);
+
+      updateUser(response.data);
+
+
+      if (role === "admin") {
+        navigate("/admin/dashboard");
       } else {
-        setError("มีบางอย่างผิดพลาด โปรดลองอีกครั้ง")
+        navigate("/user/dashboard");
+      }
+
+    } catch (error) {
+      console.log("LOGIN ERROR:", error);
+
+      if (error.response?.data?.message) {
+        setError(error.response.data.message);
+      } else {
+        setError("มีบางอย่างผิดพลาด โปรดลองอีกครั้ง");
       }
     }
   };
