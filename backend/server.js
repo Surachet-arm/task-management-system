@@ -12,13 +12,17 @@ const reportRoutes = require("./routes/reportRoutes")
 const app = express();
 
 //middleware Cors
-app.use(
-    cors({
-        origin: process.env.CLIENT_URL || "*",
-        methods: ["GET", "POST", "PUT", "DELETE"],
-        allowedHeaders: ["Content-Type", "Authorization"]
-    })
-)
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://task-management-system-9wcn.onrender.com"
+  ],
+  methods: ["GET","POST","PUT","DELETE","OPTIONS"],
+  allowedHeaders: ["Content-Type","Authorization"],
+  credentials: true
+}));
+
+app.options("*", cors());
 
 //connect DB
 connectDB();
