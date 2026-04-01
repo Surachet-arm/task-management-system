@@ -125,7 +125,7 @@ const Login = () => {
             <span className="font-medium">Email:</span> surachet@gmail.com
           </p>
           <p>
-            <span className="font-medium">Password:</span> 1234
+            <span className="font-medium">Password:</span> 123456
           </p>
           <p>
             <span className="font-medium">สถานะ User</span>
@@ -134,7 +134,7 @@ const Login = () => {
             <span className="font-medium">Email:</span> user@gmail.com
           </p>
           <p>
-            <span className="font-medium">Password:</span> 1234
+            <span className="font-medium">Password:</span> 123456
           </p>
         </div>
       </div>
