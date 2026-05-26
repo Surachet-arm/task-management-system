@@ -14,8 +14,8 @@ const app = express();
 //middleware Cors
 app.use(cors({
   origin: [
-    "http://localhost:5173",
-    "https://task-management-system-production-3981.up.railway.app"
+    "https://task-management-system-hazel-one.vercel.app",
+    "https://task-management-system-hazel-one.vercel.app"
   ],
   methods: ["GET","POST","PUT","DELETE","OPTIONS"],
   allowedHeaders: ["Content-Type","Authorization"],
